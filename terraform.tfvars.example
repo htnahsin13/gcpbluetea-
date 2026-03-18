@@ -1,0 +1,47 @@
+# ==============================================================================
+# terraform.tfvars.example
+# GCP Blue Team Lab — Example Variable Values
+# ==============================================================================
+# INSTRUCTIONS:
+#   1. Copy this file to 'terraform.tfvars':
+#        cp terraform.tfvars.example terraform.tfvars
+#   2. Fill in the required values below.
+#   3. NEVER commit terraform.tfvars to version control (it contains secrets).
+#      The .gitignore file already excludes it.
+# ==============================================================================
+
+# REQUIRED: Your GCP Project ID.
+# Find it in the GCP Console or run: gcloud config get-value project
+project_id = "your-gcp-project-id"
+
+# REQUIRED: GCP Region and Zone for deployment.
+region = "us-central1"
+zone   = "us-central1-a"
+
+# REQUIRED: Your public IP address for restricting Kali SSH access.
+# Find your IP by running: curl ifconfig.me
+# Format: "YOUR_IP/32" for a single IP, or "0.0.0.0/0" for any IP (NOT recommended).
+admin_source_ip = "YOUR_PUBLIC_IP/32"
+
+# OPTIONAL: Your SSH public key for VM access.
+# Generate with: ssh-keygen -t ed25519 -C "blue-team-lab"
+# Then copy the contents of ~/.ssh/id_ed25519.pub here.
+ssh_public_key = "ssh-ed25519 AAAA... your_email@example.com"
+
+# OPTIONAL: List of GCP users who can SSH into private VMs via IAP.
+# Format: "user:email@example.com"
+iap_users = [
+  "user:your_email@example.com",
+]
+
+# OPTIONAL: Machine types (adjust based on your budget and needs).
+# Free tier eligible: e2-micro (limited)
+# Recommended minimums for lab use:
+kali_machine_type   = "e2-medium"    # 2 vCPU, 4GB RAM
+target_machine_type = "e2-small"     # 2 vCPU, 2GB RAM
+siem_machine_type   = "e2-standard-4" # 4 vCPU, 16GB RAM (Wazuh minimum)
+
+# OPTIONAL: Disk sizes in GB.
+kali_disk_size_gb   = 50
+target_disk_size_gb = 20
+siem_disk_size_gb   = 100

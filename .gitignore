@@ -1,0 +1,43 @@
+# ==============================================================================
+# .gitignore — GCP Blue Team Lab Terraform Project
+# ==============================================================================
+
+# Terraform state files — NEVER commit these; they may contain secrets.
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Terraform variable files with actual values — NEVER commit these.
+terraform.tfvars
+*.auto.tfvars
+
+# Terraform working directory
+.terraform/
+.terraform.lock.hcl
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Override files (used for local overrides)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# SSH keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+*.pub
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
